@@ -1,0 +1,432 @@
+<svg viewBox="0 0 1200 680" xmlns="http://www.w3.org/2000/svg" font-family="'Courier New',Courier,monospace">
+<defs>
+  <!-- Animations -->
+  <style>
+    @keyframes blink    { 0%,49%{opacity:1}  50%,100%{opacity:0} }
+    @keyframes pulse    { 0%,100%{opacity:.35} 50%{opacity:1} }
+    @keyframes dataFlow { 0%{stroke-dashoffset:900} 100%{stroke-dashoffset:0} }
+    @keyframes slideIn  { from{opacity:0;transform:translateX(-18px)} to{opacity:1;transform:translateX(0)} }
+    @keyframes twinkle  { 0%,100%{opacity:.9} 50%{opacity:.15} }
+    @keyframes shoot    { 0%{stroke-dashoffset:320;opacity:0} 8%{opacity:1} 85%{opacity:.7} 100%{stroke-dashoffset:0;opacity:0} }
+    @keyframes orbitA   { from{transform:rotate(0deg)   translateX(38px) rotate(0deg)}   to{transform:rotate(360deg)  translateX(38px) rotate(-360deg)} }
+    @keyframes orbitB   { from{transform:rotate(120deg) translateX(52px) rotate(-120deg)} to{transform:rotate(480deg)  translateX(52px) rotate(-480deg)} }
+    @keyframes breathe  { 0%,100%{r:9} 50%{r:11.5} }
+
+    .cur  { animation: blink 1s step-end infinite }
+    .pl   { animation: pulse 2.2s ease-in-out infinite }
+    .df   { stroke-dasharray:7 5; animation: dataFlow 3s linear infinite }
+    .df2  { stroke-dasharray:7 5; animation: dataFlow 4.5s linear infinite reverse }
+    .df3  { stroke-dasharray:7 5; animation: dataFlow 2.5s linear infinite 1s }
+    .tw   { animation: twinkle 3.8s ease-in-out infinite }
+    .sh1  { stroke-dasharray:80 240; animation: shoot 7s  linear infinite 0.5s }
+    .sh2  { stroke-dasharray:55 190; animation: shoot 10s linear infinite 4s }
+    .si   { animation: slideIn .7s ease-out forwards }
+    .oA   { animation: orbitA 8s  linear infinite; transform-origin: 195px 330px }
+    .oB   { animation: orbitB 13s linear infinite; transform-origin: 195px 330px }
+    .br   { animation: breathe 2.8s ease-in-out infinite }
+  </style>
+
+  <!-- BG gradient: deep violet -->
+  <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%"   stop-color="#07030f"/>
+    <stop offset="60%"  stop-color="#0a0418"/>
+    <stop offset="100%" stop-color="#03060e"/>
+  </linearGradient>
+
+  <!-- Neon accent: magenta → violet → pink -->
+  <linearGradient id="neonH" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%"   stop-color="#b300ff" stop-opacity="0"/>
+    <stop offset="25%"  stop-color="#e040fb" stop-opacity=".95"/>
+    <stop offset="65%"  stop-color="#ff2cdf" stop-opacity=".95"/>
+    <stop offset="100%" stop-color="#b300ff" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="neonV" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%"   stop-color="#e040fb"/>
+    <stop offset="100%" stop-color="#6a00cc" stop-opacity=".3"/>
+  </linearGradient>
+
+  <!-- Node fills -->
+  <radialGradient id="nodeIn"  cx="35%" cy="30%" r="65%">
+    <stop offset="0%" stop-color="#2a006a"/>
+    <stop offset="100%" stop-color="#08001a"/>
+  </radialGradient>
+  <radialGradient id="nodeH1"  cx="35%" cy="30%" r="65%">
+    <stop offset="0%" stop-color="#00304a"/>
+    <stop offset="100%" stop-color="#000e18"/>
+  </radialGradient>
+  <radialGradient id="nodeH2"  cx="35%" cy="30%" r="65%">
+    <stop offset="0%" stop-color="#2a1a00"/>
+    <stop offset="100%" stop-color="#0e0800"/>
+  </radialGradient>
+  <radialGradient id="nodeOut" cx="35%" cy="30%" r="65%">
+    <stop offset="0%" stop-color="#3a0020"/>
+    <stop offset="100%" stop-color="#100008"/>
+  </radialGradient>
+
+  <!-- Glow filters -->
+  <filter id="glow4">
+    <feGaussianBlur stdDeviation="4" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="glow8">
+    <feGaussianBlur stdDeviation="8" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="glow14">
+    <feGaussianBlur stdDeviation="14" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+
+  <clipPath id="clip"><rect width="1200" height="680"/></clipPath>
+</defs>
+
+<g clip-path="url(#clip)">
+
+<!-- ── BACKGROUND ── -->
+<rect width="1200" height="680" fill="url(#bg)"/>
+
+<!-- Subtle grid overlay -->
+<g stroke="#3a0066" stroke-width=".3" opacity=".25" fill="none">
+  <line x1="0" y1="60"  x2="1200" y2="60"/>  <line x1="0" y1="120" x2="1200" y2="120"/>
+  <line x1="0" y1="180" x2="1200" y2="180"/>  <line x1="0" y1="240" x2="1200" y2="240"/>
+  <line x1="0" y1="300" x2="1200" y2="300"/>  <line x1="0" y1="360" x2="1200" y2="360"/>
+  <line x1="0" y1="420" x2="1200" y2="420"/>  <line x1="0" y1="480" x2="1200" y2="480"/>
+  <line x1="0" y1="540" x2="1200" y2="540"/>  <line x1="0" y1="600" x2="1200" y2="600"/>
+  <line x1="60"  y1="0" x2="60"  y2="680"/>  <line x1="120" y1="0" x2="120" y2="680"/>
+  <line x1="180" y1="0" x2="180" y2="680"/>  <line x1="240" y1="0" x2="240" y2="680"/>
+  <line x1="300" y1="0" x2="300" y2="680"/>  <line x1="360" y1="0" x2="360" y2="680"/>
+  <line x1="420" y1="0" x2="420" y2="680"/>  <line x1="480" y1="0" x2="480" y2="680"/>
+  <line x1="540" y1="0" x2="540" y2="680"/>  <line x1="600" y1="0" x2="600" y2="680"/>
+  <line x1="660" y1="0" x2="660" y2="680"/>  <line x1="720" y1="0" x2="720" y2="680"/>
+  <line x1="780" y1="0" x2="780" y2="680"/>  <line x1="840" y1="0" x2="840" y2="680"/>
+  <line x1="900" y1="0" x2="900" y2="680"/>  <line x1="960" y1="0" x2="960" y2="680"/>
+  <line x1="1020" y1="0" x2="1020" y2="680"/> <line x1="1080" y1="0" x2="1080" y2="680"/>
+  <line x1="1140" y1="0" x2="1140" y2="680"/>
+</g>
+
+<!-- Stars -->
+<g fill="#ddb0ff">
+  <circle cx="8"    cy="15"  r=".5" opacity=".6" class="tw" style="animation-delay:.3s"/>
+  <circle cx="50"   cy="6"   r=".6" opacity=".7" class="tw" style="animation-delay:1.2s"/>
+  <circle cx="105"  cy="28"  r=".4" opacity=".5"/>
+  <circle cx="170"  cy="10"  r=".7" opacity=".8" class="tw" style="animation-delay:.8s"/>
+  <circle cx="238"  cy="38"  r=".5" opacity=".5" class="tw" style="animation-delay:2.1s"/>
+  <circle cx="315"  cy="16"  r=".4" opacity=".4"/>
+  <circle cx="395"  cy="30"  r=".6" opacity=".6" class="tw" style="animation-delay:1.6s"/>
+  <circle cx="475"  cy="12"  r=".5" opacity=".5"/>
+  <circle cx="565"  cy="36"  r=".4" opacity=".4" class="tw" style="animation-delay:.5s"/>
+  <circle cx="658"  cy="8"   r=".7" opacity=".7" class="tw" style="animation-delay:2.4s"/>
+  <circle cx="748"  cy="26"  r=".5" opacity=".5"/>
+  <circle cx="838"  cy="14"  r=".4" opacity=".4" class="tw" style="animation-delay:1.9s"/>
+  <circle cx="928"  cy="40"  r=".6" opacity=".6" class="tw" style="animation-delay:.9s"/>
+  <circle cx="1018" cy="10"  r=".5" opacity=".5"/>
+  <circle cx="1105" cy="30"  r=".4" opacity=".4" class="tw" style="animation-delay:1.4s"/>
+  <circle cx="1188" cy="16"  r=".7" opacity=".7" class="tw" style="animation-delay:.4s"/>
+  <circle cx="82"   cy="65"  r=".5" opacity=".5" class="tw" style="animation-delay:1.8s"/>
+  <circle cx="208"  cy="78"  r=".4" opacity=".4"/>
+  <circle cx="348"  cy="58"  r=".6" opacity=".6" class="tw" style="animation-delay:.7s"/>
+</g>
+<g fill="#ffffff">
+  <circle cx="28"   cy="44"  r="1"  opacity=".85" class="tw" style="animation-delay:.6s"/>
+  <circle cx="288"  cy="20"  r="1.1" opacity=".9" class="tw" style="animation-delay:1.5s"/>
+  <circle cx="628"  cy="46"  r="1"  opacity=".85" class="tw" style="animation-delay:2.3s"/>
+  <circle cx="988"  cy="22"  r="1.1" opacity=".9" class="tw" style="animation-delay:.2s"/>
+</g>
+
+<!-- Shooting stars (violet/pink) -->
+<line class="sh1" x1="60"  y1="20" x2="440" y2="95"  stroke="#e040fb" stroke-width="1.5" stroke-linecap="round"/>
+<line class="sh2" x1="780" y1="12" x2="1100" y2="72" stroke="#ff80ff" stroke-width="1.1" stroke-linecap="round"/>
+
+<!-- Ambient glow -->
+<circle cx="195" cy="370" r="220" fill="#9000cc" opacity=".06" filter="url(#glow14)"/>
+<circle cx="800" cy="200" r="300" fill="#cc00aa" opacity=".04" filter="url(#glow14)"/>
+
+<!-- ════════════════════════════════════════════
+     OUTER WINDOW FRAME
+     ════════════════════════════════════════════ -->
+<rect x="18" y="18" width="1164" height="644" rx="10" fill="#090515" stroke="url(#neonH)" stroke-width="2.5"/>
+
+<!-- ── TITLE BAR ── -->
+<rect x="18" y="18" width="1164" height="42" fill="#0f0820" rx="10"/>
+<rect x="18" y="42"  width="1164" height="18" fill="#0f0820"/>
+<!-- Traffic lights -->
+<circle cx="46" cy="39" r="8" fill="#ff5f56"/>
+<circle cx="74" cy="39" r="8" fill="#ffbd2e"/>
+<circle cx="102" cy="39" r="8" fill="#a855f7"/>
+<!-- Title bar text -->
+<text x="128" y="45" font-size="14" fill="#e040fb" filter="url(#glow4)">tanieshk@cosmos ~ ./build_intelligence.sh</text>
+
+<!-- Top neon bar -->
+<rect x="18" y="60" width="1164" height="2.5" fill="url(#neonH)" filter="url(#glow4)" opacity=".9"/>
+
+<!-- ── VERTICAL DIVIDER between NN and content ── -->
+<line x1="400" y1="62" x2="400" y2="662" stroke="#2a0050" stroke-width="1.5"/>
+
+<!-- ════════════════════════════════════════════
+     LEFT PANEL — NEURAL NETWORK
+     ════════════════════════════════════════════ -->
+
+<!-- Panel label -->
+<text x="35"  y="92" font-size="11" fill="#6600aa" letter-spacing="2">NEURAL  ARCHITECTURE</text>
+
+<!-- Layer headers -->
+<text x="62"  y="120" font-size="11" fill="#5a0088" letter-spacing="1">Input</text>
+<text x="148" y="120" font-size="11" fill="#5a0088" letter-spacing="1">Hidden-1</text>
+<text x="250" y="120" font-size="11" fill="#5a0088" letter-spacing="1">Hidden-2</text>
+<text x="345" y="120" font-size="11" fill="#5a0088" letter-spacing="1">Output</text>
+
+<!-- ── INPUT LAYER (x=80) — 4 nodes, violet -->
+<!-- Node: AI -->
+<circle cx="80" cy="155" r="14" fill="url(#nodeIn)" stroke="#b300ff" stroke-width="2.2" class="pl" style="animation-delay:0s" filter="url(#glow4)"/>
+<text x="80" y="160" font-size="10" fill="#cc66ff" text-anchor="middle" font-weight="bold">AI</text>
+<!-- Node: ML -->
+<circle cx="80" cy="215" r="14" fill="url(#nodeIn)" stroke="#b300ff" stroke-width="2.2" class="pl" style="animation-delay:.5s" filter="url(#glow4)"/>
+<text x="80" y="220" font-size="10" fill="#cc66ff" text-anchor="middle" font-weight="bold">ML</text>
+<!-- Node: Data -->
+<circle cx="80" cy="275" r="14" fill="url(#nodeIn)" stroke="#b300ff" stroke-width="2.2" class="pl" style="animation-delay:1s" filter="url(#glow4)"/>
+<text x="80" y="280" font-size="9" fill="#cc66ff" text-anchor="middle" font-weight="bold">Data</text>
+<!-- Node: NLP -->
+<circle cx="80" cy="335" r="14" fill="url(#nodeIn)" stroke="#b300ff" stroke-width="2.2" class="pl" style="animation-delay:1.5s" filter="url(#glow4)"/>
+<text x="80" y="340" font-size="9" fill="#cc66ff" text-anchor="middle" font-weight="bold">NLP</text>
+
+<!-- ── HIDDEN LAYER 1 (x=190) — 5 nodes, cyan -->
+<!-- Node: RAG -->
+<circle cx="190" cy="140" r="14" fill="url(#nodeH1)" stroke="#00c8ff" stroke-width="2.2" class="pl" style="animation-delay:.2s" filter="url(#glow4)"/>
+<text x="190" y="145" font-size="9" fill="#60e0ff" text-anchor="middle" font-weight="bold">RAG</text>
+<!-- Node: LLM -->
+<circle cx="190" cy="200" r="14" fill="url(#nodeH1)" stroke="#00c8ff" stroke-width="2.2" class="pl" style="animation-delay:.7s" filter="url(#glow4)"/>
+<text x="190" y="205" font-size="9" fill="#60e0ff" text-anchor="middle" font-weight="bold">LLM</text>
+<!-- Node: CV -->
+<circle cx="190" cy="260" r="14" fill="url(#nodeH1)" stroke="#00c8ff" stroke-width="2.2" class="pl" style="animation-delay:1.2s" filter="url(#glow4)"/>
+<text x="190" y="265" font-size="9" fill="#60e0ff" text-anchor="middle" font-weight="bold">CV</text>
+<!-- Node: AGT -->
+<circle cx="190" cy="320" r="14" fill="url(#nodeH1)" stroke="#00c8ff" stroke-width="2.2" class="pl" style="animation-delay:1.7s" filter="url(#glow4)"/>
+<text x="190" y="325" font-size="9" fill="#60e0ff" text-anchor="middle" font-weight="bold">AGT</text>
+<!-- Node: OPT -->
+<circle cx="190" cy="380" r="14" fill="url(#nodeH1)" stroke="#00c8ff" stroke-width="2.2" class="pl" style="animation-delay:2.2s" filter="url(#glow4)"/>
+<text x="190" y="385" font-size="9" fill="#60e0ff" text-anchor="middle" font-weight="bold">OPT</text>
+
+<!-- ── HIDDEN LAYER 2 (x=300) — 3 nodes, amber -->
+<!-- Node: Fine-Tune -->
+<circle cx="300" cy="175" r="14" fill="url(#nodeH2)" stroke="#ffaa00" stroke-width="2.2" class="pl" style="animation-delay:.4s" filter="url(#glow4)"/>
+<text x="300" y="171" font-size="8" fill="#ffd060" text-anchor="middle" font-weight="bold">Fine</text>
+<text x="300" y="182" font-size="8" fill="#ffd060" text-anchor="middle" font-weight="bold">Tune</text>
+<!-- Node: MLOps -->
+<circle cx="300" cy="265" r="14" fill="url(#nodeH2)" stroke="#ffaa00" stroke-width="2.2" class="pl" style="animation-delay:.9s" filter="url(#glow4)"/>
+<text x="300" y="270" font-size="8" fill="#ffd060" text-anchor="middle" font-weight="bold">MLOps</text>
+<!-- Node: Agents -->
+<circle cx="300" cy="355" r="14" fill="url(#nodeH2)" stroke="#ffaa00" stroke-width="2.2" class="pl" style="animation-delay:1.4s" filter="url(#glow4)"/>
+<text x="300" y="360" font-size="8" fill="#ffd060" text-anchor="middle" font-weight="bold">Agent</text>
+
+<!-- ── OUTPUT NODE (x=375) — glowing pink, breathing -->
+<circle cx="375" cy="260" r="9"  fill="none" stroke="#ff2cdf" stroke-width="1.5" opacity=".3" class="pl" style="animation-delay:0s"/>
+<circle cx="375" cy="260" r="18" fill="none" stroke="#ff2cdf" stroke-width=".8" opacity=".15" class="pl" style="animation-delay:.5s"/>
+<circle cx="375" cy="260" r="14" fill="url(#nodeOut)" stroke="#ff2cdf" stroke-width="3" class="br" filter="url(#glow8)"/>
+<text x="375" y="256" font-size="11" text-anchor="middle" fill="#ff80ff">🚀</text>
+<text x="375" y="270" font-size="8"  text-anchor="middle" fill="#ff2cdf" font-weight="bold">BUILD</text>
+
+<!-- ── CONNECTION LINES ── -->
+<!-- Input → Hidden-1 (violet → cyan) -->
+<line x1="94" y1="155" x2="176" y2="140" stroke="#b300ff" stroke-width="1.4" opacity=".5" class="df"/>
+<line x1="94" y1="155" x2="176" y2="200" stroke="#b300ff" stroke-width="1.4" opacity=".4" class="df2"/>
+<line x1="94" y1="155" x2="176" y2="260" stroke="#b300ff" stroke-width="1.4" opacity=".3" class="df"/>
+<line x1="94" y1="215" x2="176" y2="140" stroke="#b300ff" stroke-width="1.4" opacity=".3" class="df2"/>
+<line x1="94" y1="215" x2="176" y2="200" stroke="#b300ff" stroke-width="1.4" opacity=".5" class="df"/>
+<line x1="94" y1="215" x2="176" y2="320" stroke="#b300ff" stroke-width="1.4" opacity=".3" class="df2"/>
+<line x1="94" y1="275" x2="176" y2="200" stroke="#b300ff" stroke-width="1.4" opacity=".4" class="df"/>
+<line x1="94" y1="275" x2="176" y2="260" stroke="#b300ff" stroke-width="1.4" opacity=".5" class="df2"/>
+<line x1="94" y1="275" x2="176" y2="380" stroke="#b300ff" stroke-width="1.4" opacity=".3" class="df3"/>
+<line x1="94" y1="335" x2="176" y2="260" stroke="#b300ff" stroke-width="1.4" opacity=".4" class="df"/>
+<line x1="94" y1="335" x2="176" y2="320" stroke="#b300ff" stroke-width="1.4" opacity=".5" class="df2"/>
+<line x1="94" y1="335" x2="176" y2="380" stroke="#b300ff" stroke-width="1.4" opacity=".4" class="df3"/>
+
+<!-- Hidden-1 → Hidden-2 (cyan → amber) -->
+<line x1="204" y1="140" x2="286" y2="175" stroke="#00c8ff" stroke-width="1.4" opacity=".5" class="df2"/>
+<line x1="204" y1="200" x2="286" y2="175" stroke="#00c8ff" stroke-width="1.4" opacity=".5" class="df"/>
+<line x1="204" y1="200" x2="286" y2="265" stroke="#00c8ff" stroke-width="1.4" opacity=".4" class="df3"/>
+<line x1="204" y1="260" x2="286" y2="265" stroke="#00c8ff" stroke-width="1.4" opacity=".5" class="df2"/>
+<line x1="204" y1="260" x2="286" y2="355" stroke="#00c8ff" stroke-width="1.4" opacity=".3" class="df"/>
+<line x1="204" y1="320" x2="286" y2="265" stroke="#00c8ff" stroke-width="1.4" opacity=".4" class="df3"/>
+<line x1="204" y1="320" x2="286" y2="355" stroke="#00c8ff" stroke-width="1.4" opacity=".5" class="df2"/>
+<line x1="204" y1="380" x2="286" y2="355" stroke="#00c8ff" stroke-width="1.4" opacity=".5" class="df"/>
+
+<!-- Hidden-2 → Output (amber → pink) -->
+<line x1="314" y1="175" x2="360" y2="252" stroke="#ffaa00" stroke-width="2"   opacity=".65" class="df"/>
+<line x1="314" y1="265" x2="360" y2="260" stroke="#ffaa00" stroke-width="2"   opacity=".7"  class="df2"/>
+<line x1="314" y1="355" x2="360" y2="268" stroke="#ffaa00" stroke-width="2"   opacity=".6"  class="df3"/>
+
+<!-- ── BOTTOM OF LEFT PANEL ── -->
+<!-- Tech pills under NN -->
+<text x="35" y="430" font-size="12" fill="#6600aa" font-weight="bold" letter-spacing="1">Tech Arsenal:</text>
+
+<g font-size="11" font-weight="bold">
+  <rect x="35"  y="438" width="76" height="22" rx="11" fill="#0e0020" stroke="#b300ff" stroke-width="1.2"/>
+  <text x="73"  y="454" text-anchor="middle" fill="#cc66ff">Python</text>
+  <rect x="118" y="438" width="88" height="22" rx="11" fill="#0e0020" stroke="#b300ff" stroke-width="1.2"/>
+  <text x="162" y="454" text-anchor="middle" fill="#cc66ff">TensorFlow</text>
+  <rect x="213" y="438" width="80" height="22" rx="11" fill="#0e0020" stroke="#b300ff" stroke-width="1.2"/>
+  <text x="253" y="454" text-anchor="middle" fill="#cc66ff">PyTorch</text>
+  <rect x="300" y="438" width="92" height="22" rx="11" fill="#0e0020" stroke="#b300ff" stroke-width="1.2"/>
+  <text x="346" y="454" text-anchor="middle" fill="#cc66ff">scikit-learn</text>
+
+  <rect x="35"  y="466" width="80" height="22" rx="11" fill="#001020" stroke="#00c8ff" stroke-width="1.2"/>
+  <text x="75"  y="482" text-anchor="middle" fill="#60e0ff">LangChain</text>
+  <rect x="122" y="466" width="90" height="22" rx="11" fill="#001020" stroke="#00c8ff" stroke-width="1.2"/>
+  <text x="167" y="482" text-anchor="middle" fill="#60e0ff">LlamaIndex</text>
+  <rect x="219" y="466" width="98" height="22" rx="11" fill="#001020" stroke="#00c8ff" stroke-width="1.2"/>
+  <text x="268" y="482" text-anchor="middle" fill="#60e0ff">HuggingFace</text>
+
+  <rect x="35"  y="494" width="80" height="22" rx="11" fill="#180010" stroke="#ff2cdf" stroke-width="1.2"/>
+  <text x="75"  y="510" text-anchor="middle" fill="#ff80ff">OpenCV</text>
+  <rect x="122" y="494" width="58" height="22" rx="11" fill="#180010" stroke="#ff2cdf" stroke-width="1.2"/>
+  <text x="151" y="510" text-anchor="middle" fill="#ff80ff">AWS</text>
+  <rect x="187" y="494" width="78" height="22" rx="11" fill="#180010" stroke="#ff2cdf" stroke-width="1.2"/>
+  <text x="226" y="510" text-anchor="middle" fill="#ff80ff">FastAPI</text>
+  <rect x="272" y="494" width="66" height="22" rx="11" fill="#180010" stroke="#ff2cdf" stroke-width="1.2"/>
+  <text x="305" y="510" text-anchor="middle" fill="#ff80ff">Docker</text>
+
+  <rect x="35"  y="522" width="76" height="22" rx="11" fill="#0e1800" stroke="#ffaa00" stroke-width="1.2"/>
+  <text x="73"  y="538" text-anchor="middle" fill="#ffd060">Streamlit</text>
+  <rect x="118" y="522" width="66" height="22" rx="11" fill="#0e1800" stroke="#ffaa00" stroke-width="1.2"/>
+  <text x="151" y="538" text-anchor="middle" fill="#ffd060">FastAPI</text>
+  <rect x="191" y="522" width="64" height="22" rx="11" fill="#0e1800" stroke="#ffaa00" stroke-width="1.2"/>
+  <text x="223" y="538" text-anchor="middle" fill="#ffd060">MySQL</text>
+  <rect x="262" y="522" width="76" height="22" rx="11" fill="#0e1800" stroke="#ffaa00" stroke-width="1.2"/>
+  <text x="300" y="538" text-anchor="middle" fill="#ffd060">Power BI</text>
+</g>
+
+<!-- "Making Machines Think" -->
+<text x="195" y="572" font-size="11" fill="#44006a" font-style="italic" text-anchor="middle">∿ Making Machines Think ∿</text>
+
+<!-- ════════════════════════════════════════════
+     RIGHT PANEL — CONTENT
+     ════════════════════════════════════════════ -->
+
+<!-- ── NAME + HEADLINE ── -->
+<text x="424" y="100" font-size="11" fill="#5a0088" letter-spacing="3">ENGINEER  ·  BUILDER  ·  RESEARCHER</text>
+
+<!-- Name glow -->
+<text x="422" y="152" font-size="46" font-weight="bold" fill="#e040fb" filter="url(#glow8)" letter-spacing="1.5" opacity=".3">Tanieshk Yadav</text>
+<text x="422" y="152" font-size="46" font-weight="bold" fill="#f0aaff" letter-spacing="1.5">Tanieshk Yadav</text>
+
+<!-- Role tags -->
+<rect x="422" y="163" width="172" height="26" rx="13" fill="#18002a" stroke="#b300ff" stroke-width="1.3"/>
+<text x="508" y="181" font-size="13" fill="#cc66ff" text-anchor="middle" font-weight="bold">AI Agent Engineer</text>
+
+<rect x="603" y="163" width="196" height="26" rx="13" fill="#001425" stroke="#00c8ff" stroke-width="1.3"/>
+<text x="701" y="181" font-size="13" fill="#60e0ff" text-anchor="middle" font-weight="bold">Final Year BE · AI &amp; ML</text>
+
+<rect x="808" y="163" width="182" height="26" rx="13" fill="#1e0012" stroke="#ff2cdf" stroke-width="1.3"/>
+<text x="899" y="181" font-size="13" fill="#ff80ff" text-anchor="middle" font-weight="bold">Open to Internships</text>
+
+<rect x="999" y="163" width="88"  height="26" rx="13" fill="#120a00" stroke="#ffaa00" stroke-width="1.3"/>
+<text x="1043" y="181" font-size="13" fill="#ffd060" text-anchor="middle">India 🇮🇳</text>
+
+<!-- Divider -->
+<line x1="422" y1="200" x2="1168" y2="200" stroke="url(#neonH)" stroke-width="1" opacity=".45"/>
+<text x="422" y="200" font-size="10" fill="#2a0050">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+
+<!-- ── INFO BLOCK: command style ── -->
+<text x="422" y="228" font-size="15" fill="#e040fb" font-weight="bold" filter="url(#glow4)">$ ./tanieshk --info</text>
+<text x="422" y="252" font-size="14" fill="#7a7a9a">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+
+<text x="422" y="276" font-size="14">
+  <tspan fill="#888">  🔭  Building  </tspan><tspan fill="#f0aaff" font-weight="bold">PromptOptix</tspan><tspan fill="#555">  —  Final year research paper, solo lead dev</tspan>
+</text>
+<text x="422" y="298" font-size="14">
+  <tspan fill="#888">  🧠  Focus     </tspan><tspan fill="#60e0ff" font-weight="bold">Agentic AI Systems</tspan><tspan fill="#555">  ·  LLMs  ·  RAG  ·  Automation</tspan>
+</text>
+<text x="422" y="320" font-size="14">
+  <tspan fill="#888">  📚  Learning  </tspan><tspan fill="#ffd060" font-weight="bold">Advanced Architectures</tspan><tspan fill="#555">  ·  AI scaling  ·  MLOps</tspan>
+</text>
+<text x="422" y="342" font-size="14">
+  <tspan fill="#888">  🤝  Collab    </tspan><tspan fill="#ff80ff" font-weight="bold">LLMs  ·  Agentic AI  ·  Research  ·  Automation</tspan>
+</text>
+
+<!-- Divider -->
+<text x="422" y="358" font-size="10" fill="#2a0050">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+
+<!-- ── PROJECTS ── -->
+<text x="422" y="382" font-size="15" fill="#e040fb" font-weight="bold" filter="url(#glow4)">$ ./projects --pinned</text>
+<text x="422" y="398" font-size="10" fill="#2a0050">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+
+<!-- Project cards — 4 cards in 2×2 -->
+<!-- P1 -->
+<rect x="422" y="406" width="182" height="88" rx="9" fill="#100018" stroke="#b300ff" stroke-width="1.3"/>
+<rect x="422" y="406" width="182" height="3"  rx="2" fill="#b300ff"/>
+<text x="436" y="428" font-size="13" fill="#cc66ff" font-weight="bold">AI Agent Framework</text>
+<text x="436" y="446" font-size="11" fill="#44006a">Agentic pipelines</text>
+<text x="436" y="462" font-size="11" fill="#44006a">LangChain · FastAPI</text>
+<text x="436" y="488" font-size="10" fill="#330050">Python · LLM</text>
+
+<!-- P2 -->
+<rect x="614" y="406" width="182" height="88" rx="9" fill="#00101e" stroke="#00c8ff" stroke-width="1.3"/>
+<rect x="614" y="406" width="182" height="3"  rx="2" fill="#00c8ff"/>
+<text x="628" y="428" font-size="13" fill="#60e0ff" font-weight="bold">PromptOptix</text>
+<text x="628" y="446" font-size="11" fill="#0a3a50">Prompt optimization</text>
+<text x="628" y="462" font-size="11" fill="#0a3a50">LLM evals · benchmarks</text>
+<text x="628" y="488" font-size="10" fill="#082840">Python · Research</text>
+
+<!-- P3 -->
+<rect x="806" y="406" width="182" height="88" rx="9" fill="#1a001a" stroke="#ff2cdf" stroke-width="1.3"/>
+<rect x="806" y="406" width="182" height="3"  rx="2" fill="#ff2cdf"/>
+<text x="820" y="428" font-size="13" fill="#ff80ff" font-weight="bold">Computer Vision App</text>
+<text x="820" y="446" font-size="11" fill="#5a1050">Real-time detection</text>
+<text x="820" y="462" font-size="11" fill="#5a1050">OpenCV · TensorFlow</text>
+<text x="820" y="488" font-size="10" fill="#3a0830">Python · CV</text>
+
+<!-- P4 -->
+<rect x="998" y="406" width="182" height="88" rx="9" fill="#100e00" stroke="#ffaa00" stroke-width="1.3"/>
+<rect x="998" y="406" width="182" height="3"  rx="2" fill="#ffaa00"/>
+<text x="1012" y="428" font-size="13" fill="#ffd060" font-weight="bold">ML Pipeline Toolkit</text>
+<text x="1012" y="446" font-size="11" fill="#503800">End-to-end training</text>
+<text x="1012" y="462" font-size="11" fill="#503800">scikit-learn · Pandas</text>
+<text x="1012" y="488" font-size="10" fill="#352500">Python · MLOps</text>
+
+<!-- Divider -->
+<text x="422" y="508" font-size="10" fill="#2a0050">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+
+<!-- ── FUN FACT + ASK ME ── -->
+<text x="422" y="530" font-size="13">
+  <tspan fill="#5a0088">Fun fact:</tspan>
+  <tspan fill="#ff80ff" font-weight="bold">  Leading full dev of PromptOptix — solo. Group's final year paper, all on me.</tspan>
+</text>
+<text x="422" y="550" font-size="13">
+  <tspan fill="#5a0088">Ask me: </tspan>
+  <tspan fill="#60e0ff">  AI agents  ·  ML projects  ·  real-world AI  ·  agentic workflows</tspan>
+</text>
+
+<!-- Divider -->
+<text x="422" y="566" font-size="10" fill="#2a0050">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</text>
+
+<!-- ── CONNECT PILLS ── -->
+<text x="422" y="588" font-size="11" fill="#5a0088" letter-spacing="2">CONNECT</text>
+
+<rect x="422" y="596" width="96"  height="24" rx="12" fill="#000e1e" stroke="#0077b5" stroke-width="1.2"/>
+<text x="470" y="613" font-size="12" fill="#3090cc" text-anchor="middle" font-weight="bold">LinkedIn</text>
+<rect x="526" y="596" width="86"  height="24" rx="12" fill="#0a0a14" stroke="#555" stroke-width="1.2"/>
+<text x="569" y="613" font-size="12" fill="#9090aa" text-anchor="middle" font-weight="bold">GitHub</text>
+<rect x="620" y="596" width="102" height="24" rx="12" fill="#1a000e" stroke="#e4405f" stroke-width="1.2"/>
+<text x="671" y="613" font-size="12" fill="#dd5070" text-anchor="middle" font-weight="bold">Instagram</text>
+<rect x="730" y="596" width="64"  height="24" rx="12" fill="#060606" stroke="#444" stroke-width="1.2"/>
+<text x="762" y="613" font-size="12" fill="#888898" text-anchor="middle" font-weight="bold">X</text>
+<rect x="802" y="596" width="72"  height="24" rx="12" fill="#180400" stroke="#d14836" stroke-width="1.2"/>
+<text x="838" y="613" font-size="12" fill="#cc4428" text-anchor="middle" font-weight="bold">Email</text>
+
+<!-- ── BOTTOM TERMINAL PROMPT ── -->
+<text x="422" y="650" font-size="14" fill="#e040fb" filter="url(#glow4)">tanieshk</text>
+<text x="507" y="650" font-size="14" fill="#aaa">@cosmos</text>
+<text x="583" y="650" font-size="14" fill="#555">:</text>
+<text x="592" y="650" font-size="14" fill="#b300ff">~/ai-agents</text>
+<text x="702" y="650" font-size="14" fill="#777">$ git commit -m </text>
+<text x="858" y="650" font-size="14" fill="#ff2cdf">"building the future"</text>
+<text x="1060" y="650" font-size="14" fill="#e040fb" class="cur">█</text>
+
+<!-- FOOTER GLOW LINE -->
+<line x1="35" y1="636" x2="1168" y2="636" stroke="url(#neonH)" stroke-width="2" opacity=".55" filter="url(#glow4)"/>
+
+<!-- Bottom neon bar -->
+<rect x="18" y="659" width="1164" height="3" rx="2" fill="url(#neonH)" filter="url(#glow4)" opacity=".7"/>
+
+</g>
+</svg>
