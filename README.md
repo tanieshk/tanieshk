@@ -1,5 +1,5 @@
 <!-- Banner SVG — place the tanieshk-cosmic-v2.svg in your repo root and it auto-renders -->
-![Tanieshk Yadav — AI Agent Builder](./tanieshk-cosmic-v2 (1).svg)
+![Tanieshk Yadav — AI Agent Builder](./tanieshk-cosmic-v2.svg)
 
 <br/>
 
