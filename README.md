@@ -19,7 +19,7 @@
 class TanieshkYadav:
     role       = "AI Agent Engineer · Final Year BE (AI & ML)"
     focus      = ["Agentic AI Systems", "LLM Applications", "Real-world AI"]
-    building   = "PromptOptix — Final Year Research Paper (solo lead dev)"
+    building   = "PromptOptix — Final Year Research Paper (solo Research lead)"
     seeking    = "AI/ML Internships · LLM + Automation Collaborations"
     superpower = "Turning complex AI architectures into real-world systems"
 
@@ -43,8 +43,6 @@ class TanieshkYadav:
 
 ![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=flat-square&logo=fastapi)
 ![Streamlit](https://img.shields.io/badge/Streamlit-%23FE4B4B.svg?style=flat-square&logo=streamlit&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-%238511FA.svg?style=flat-square&logo=bootstrap&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=flat-square&logo=html5&logoColor=white)
 
 **Data & Visualization**
 
